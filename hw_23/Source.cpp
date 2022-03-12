@@ -22,13 +22,14 @@ void threeMax(int &num1,int &num2,int &num3) {
 }
 //задача 2
 int z2arr(int arr[], int length) {
-	int& zeroArr = *(arr+1);
-	
+	int& zeroArr = *arr;
+	int index = 0;
 	for (int i = 0; i < length; i++)
-		//& arrRef = arr[i];
-		if (arr[i] < 0)
-			
-		return arr[i];
+		if (arr[i] < index) {
+			index = arr[i];
+			int& min = index;
+			return min;
+		}
 		return zeroArr;
 }
 //Задача3 (обнуляет элементы второго массива, которые встречаются в первом)
@@ -38,12 +39,7 @@ void z3(int arr[], int length, int arr2[], int length2) {
 		for (int j = 0; j < length2; j++)
 			if (*(arr+i) == *(arr2+j))
 				*(arr2+j) = 0;
-		
-
 	}
-
-	
-
 }
 
 int main() {
@@ -57,7 +53,7 @@ int main() {
 
 	//Задача 2
 	cout << "\nЗадача 2\n";
-	int z2[10] = {9,111,6,4,-6,7,8,5,3,2 };
+	int z2[10] = {9,-111,6,4,6,7,8,5,3,2 };
 	showArr(z2, 10);
 	cout << endl;
 	cout << z2arr(z2, 10);
@@ -72,10 +68,9 @@ int main() {
 	cout << endl;
 	cout << "Второй массив:\n";
 	showArr(z3_2, 6);
-	cout << "\nИтоговый массив:\n";
+	cout << "\nВторой массив после работы функции:\n";
 	z3(z3_1, 7, z3_2, 6);
 	showArr(z3_2, 6);
-	
 	
 
 	cout << endl;
